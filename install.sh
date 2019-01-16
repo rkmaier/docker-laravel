@@ -8,6 +8,9 @@ apt-get install -y vim
 
 echo "COMPOSER INSTALL"
 composer install
+
+php artisan:migrate
+php artisan queue:table
 php artisan:migrate
 
 exec "/usr/bin/supervisord"

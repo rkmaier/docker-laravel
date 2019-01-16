@@ -24,7 +24,7 @@ services:
       - 3306:3306
     volumes:
       - ./data:/var/lib/mysql
-      - ./docker/conf/my.cnf:/etc/my.cnf
+      - ./docker/conf/my.cnf:/etc/mysql/my.cnf
       - ./docker/scripts/mariadb_init.sh:/mariadb_init.sh
       - ./docker/scripts/run.sh:/run.sh
     environment:

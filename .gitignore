@@ -1,0 +1,24 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+
+/*
+
+# Whitelist some files
+!.gitignore
+!README.md
+!docker-compose.yml
+!install.sh
+!mariadb_install.sh
+!my.cnf
+!run.sh
+!supervisord.conf

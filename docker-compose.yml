@@ -1,0 +1,35 @@
+version: '3'
+services:
+  web:
+    image: offlinegmbh/laravel-php7.0
+    ports:
+      - 8888:80
+    restart: always
+    command: sh install.sh
+    tty: true
+    stdin_open: true
+    links:
+      - db
+    volumes:
+      - ./:/var/www
+      - ./install.sh:/install.sh
+      - ./docker/log/apache:/var/log/apache2
+
+
+  db:
+    image: dydx/alpine-mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/data:/var/lib/mysql
+      - ./my.cnf:/etc/my.cnf
+      - ./mariadb_init.sh:/mariadb_init.sh
+      - ./run.sh:/run.sh
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: erik
+      MYSQL_PASSWORD: skipjack
+      MYSQL_DATABASE: picstars
+
+

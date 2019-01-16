@@ -5,18 +5,17 @@ services:
     ports:
       - 8888:80
     restart: always
-    command: sh install.sh
+    command: sh /docker/scripts/install.sh
     tty: true
     stdin_open: true
     links:
       - db
     volumes:
       - ./:/var/www
-      - ./install.sh:/install.sh
-      - ./start_cron.sh:/start_cron.sh
-      - ./docker/log/apache:/var/log/apache2
-      - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
-
+      - ./docker/scripts/install.sh:/docker/scripts/install.sh
+      - ./docker/scripts/start_cron.sh:/start_cron.sh
+      - ./data/logs/apache:/var/log/apache2
+      - ./docker/conf/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
 
   db:
     image: dydx/alpine-mariadb
@@ -24,14 +23,14 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./docker/data:/var/lib/mysql
-      - ./my.cnf:/etc/my.cnf
-      - ./mariadb_init.sh:/mariadb_init.sh
-      - ./run.sh:/run.sh
+      - ./data:/var/lib/mysql
+      - ./docker/conf/my.cnf:/etc/my.cnf
+      - ./docker/scripts/mariadb_init.sh:/mariadb_init.sh
+      - ./docker/scripts/run.sh:/run.sh
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: erik
       MYSQL_PASSWORD: skipjack
-      MYSQL_DATABASE: picstars
+      MYSQL_DATABASE: database_1
 
 

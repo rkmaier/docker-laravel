@@ -14,12 +14,4 @@ yarn-error.log
 /*
 
 # Whitelist some files
-!.gitignore
-!README.md
-!docker-compose.yml
-!install.sh
-!mariadb_install.sh
-!my.cnf
-!run.sh
-!supervisord.conf
-!start_cron.sh
+!/docker

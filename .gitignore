@@ -22,3 +22,4 @@ yarn-error.log
 !my.cnf
 !run.sh
 !supervisord.conf
+!start_cron.sh

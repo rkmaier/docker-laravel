@@ -13,6 +13,7 @@ services:
     volumes:
       - ./:/var/www
       - ./install.sh:/install.sh
+      - ./start_cron.sh:/start_cron.sh
       - ./docker/log/apache:/var/log/apache2
       - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
 

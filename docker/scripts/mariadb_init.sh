@@ -6,8 +6,7 @@ mysqladmin --silent --wait=30 ping
 mysql -uroot -e "CREATE USER 'erik'@'%' IDENTIFIED BY 'skipjack'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'erik'@'%' WITH GRANT OPTION"
 mysql -uroot -e "FLUSH PRIVILEGES"
-mysql -uroot -e "DROP DATABASE database_1 IF EXISTS"
-mysql -uroot -e "CREATE SCHEMA database_1 IF NOT EXISTS"
+mysql -uroot -e "CREATE SCHEMA database_1"
 
 echo "=> Done!"
 
@@ -19,7 +18,5 @@ echo ""
 echo "Please remember to change the above password as soon as possible!"
 echo "MariaDB user 'root' has no password but only allows local connections"
 echo "========================================================================"
-
-
 
 mysqladmin -uroot shutdown

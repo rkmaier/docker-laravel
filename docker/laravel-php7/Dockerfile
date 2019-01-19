@@ -1,10 +1,12 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.10
 MAINTAINER Tobias Kuendig <tobias@offline.swiss>
 
-RUN apt-get update && apt-get -y install git curl apache2 php7.0 libapache2-mod-php7.0 php7.0-mysql php7.0-sqlite php7.0-mcrypt php7.0-xml php7.0-gd php7.0-zip unzip php7.0-mbstring php7.0-json supervisor nodejs npm && apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN apt-get update -y
-RUN apt-get install -y php7.0-curl
-RUN apt-get install -y vim
+ENV DEBIAN_FRONTEND=noninteractiv
+
+RUN apt-get update
+RUN apt-get install -y software-properties-common && add-apt-repository ppa:ondrej/php
+RUN apt-get update && apt-get -y install git curl apache2 php7.0 libapache2-mod-php7.0 php7.0-mysql php7.0-sqlite php7.0-mcrypt php7.0-xml php7.0-gd php7.0-zip unzip php7.0-mbstring php7.0-json php7.0-curl supervisor nodejs npm && apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 RUN /usr/sbin/a2enmod rewrite php7.0
 

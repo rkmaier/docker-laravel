@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     container_name: server_1
-    image: offlinegmbh/laravel-php7.0
+    build: ./docker/laravel-php7
     ports:
       - 8888:80
     restart: always
@@ -16,7 +16,6 @@ services:
       - ./docker/scripts/install.sh:/docker/scripts/install.sh
       - ./docker/scripts/start_cron.sh:/start_cron.sh
       - ./data/logs/apache:/var/log/apache2
-      - ./docker/conf/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
 
   db:
     container_name: database_1
